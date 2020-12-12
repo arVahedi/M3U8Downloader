@@ -82,7 +82,7 @@ public class M3u8Processor {
                                     totalItems,
                                     calculateProcessPercentage(totalItems, resultSegmentsMap.size())));
                             break;
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             LogFactory.getLogger(this.getClass()).error(e.getMessage(), e);
                             if (++this.currentTries == this.maxTries) {
                                 downlaodSegmentChecksum[0] = false;
