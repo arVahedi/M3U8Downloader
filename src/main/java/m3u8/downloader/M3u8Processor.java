@@ -7,7 +7,6 @@ import m3u8.downloader.convert.DefaultConverter;
 import m3u8.downloader.log.LogFactory;
 import m3u8.downloader.utility.random.RandomUtility;
 import org.apache.commons.io.FileUtils;
-import ws.schild.jave.EncoderException;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,6 +64,7 @@ public class M3u8Processor {
                 String localItem = finalItem;
                 int maxTries = 10;
                 int currentTries = 1;
+
                 @Override
                 public void run() {
                     while (this.currentTries <= this.maxTries) {
