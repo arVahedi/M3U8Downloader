@@ -52,7 +52,7 @@ public class M3u8Processor {
         int totalItems = this.resourceQueue.size();
         LogFactory.getLogger(this.getClass()).info(String.format("[%d] files will be downloading...", totalItems));
         int index = 0;
-        final boolean[] downlaodSegmentChecksum = {true};
+        final boolean[] downloadSegmentChecksum = {true};
         while (!this.resourceQueue.isEmpty()) {
             index++;
             String item = this.resourceQueue.poll();
@@ -85,7 +85,7 @@ public class M3u8Processor {
                         } catch (Exception e) {
                             LogFactory.getLogger(this.getClass()).error(e.getMessage(), e);
                             if (++this.currentTries == this.maxTries) {
-                                downlaodSegmentChecksum[0] = false;
+                                downloadSegmentChecksum[0] = false;
                             }
                         }
                     }
@@ -101,7 +101,7 @@ public class M3u8Processor {
             Thread.currentThread().interrupt();
         }
 
-        if (!downlaodSegmentChecksum[0]) {
+        if (!downloadSegmentChecksum[0]) {
             LogFactory.getLogger(this.getClass()).error("Download Failed!!!");
             throw new Exception("Download failed!!");
         }
