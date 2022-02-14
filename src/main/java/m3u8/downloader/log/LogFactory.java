@@ -1,8 +1,8 @@
 package m3u8.downloader.log;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -55,49 +55,5 @@ public class LogFactory implements Serializable {
         getLogger(className).trace(String.format("%s : %s() Method Return. [%s]",
                 className.getSimpleName(),
                 Thread.currentThread().getStackTrace()[2].getMethodName(), description));
-    }
-
-    public static Level setLoggerLevel(String loggerName, String levelName) {
-        Logger logger = Logger.getLogger(loggerName);
-        logger.setLevel(Level.toLevel(levelName.toUpperCase()));
-
-        /*switch (levelName.toUpperCase()) {
-            case "OFF":
-                logger.setLevel(Level.OFF);
-                break;
-            case "FATAL":
-                logger.setLevel(Level.FATAL);
-                break;
-            case "ERROR":
-                logger.setLevel(Level.ERROR);
-                break;
-            case "WARN":
-                logger.setLevel(Level.WARN);
-                break;
-            case "INFO":
-                logger.setLevel(Level.INFO);
-                break;
-            case "DEBUG":
-                logger.setLevel(Level.DEBUG);
-                break;
-            case "TRACE":
-                logger.setLevel(Level.TRACE);
-                break;
-            case "ALL":
-                logger.setLevel(Level.ALL);
-                break;
-            default:
-                getLogger(LogFactory.class).error(String.format("Invalid value for logger level. [%s]", levelName));
-                break;
-        }*/
-
-        getLogger(LogFactory.class).info(String.format("Set level for [%s] logger to [%s]", logger.getName(), logger.getLevel()));
-        return logger.getLevel();
-    }
-
-    public static Level getLoggerLevel(String loggerName) {
-        Logger logger = Logger.getLogger(loggerName);
-        getLogger(LogFactory.class).info(String.format("Level for [%s] logger is [%s]", logger.getName(), logger.getLevel()));
-        return logger.getLevel();
     }
 }
